@@ -1,6 +1,6 @@
 [Protocol]
-exec=kopete "%u"
-protocol=aim
+exec=libreapps "%u"
+protocol=install
 input=none
 output=none
 helper=true
