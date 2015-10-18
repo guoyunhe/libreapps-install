@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=PackageManager;System;
+Comment[zh_CN]=一键安装 LibreApps 上的自由软件应用
+Comment=1-click Install FOSS Applications On LibreApps
+Exec=/usr/bin/libreapps %u
+GenericName[zh_CN]=软件包安装器
+GenericName=Package Installer
+Icon=libreapps
+MimeType=x-scheme-handler/install
+Name=LibreApps

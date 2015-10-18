@@ -1,0 +1,14 @@
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="256" width="256" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 256 256">
+<g id="layer1" transform="translate(0 -796.36)">
+<circle id="circle4169" cx="128" cy="924.36" r="116" fill="#e6e6e6"/>
+<g stroke="#d45500" stroke-linecap="round" fill="none">
+<g stroke-width="8">
+<path id="path4155" d="m168.34 815.6a116 116 0 0 1 68.59 148.63 116 116 0 0 1 -148.32 69.27 116 116 0 0 1 -69.887 -148.05"/>
+<circle id="path4157" cx="128" cy="924.36" r="92"/>
+<circle id="circle4159" cy="924.36" cx="128" r="68"/>
+</g>
+<circle id="circle4161" cx="128" cy="924.36" r="44" stroke-width="8"/>
+</g>
+<path id="path4173" stroke-linejoin="round" fill="#e6e6e6" stroke="#d45500" stroke-linecap="round" stroke-width="8" d="m236.64 883.69a116 116 0 0 1 -48.44 139.81l-60.2-99.14z"/>
+</g>
+</svg>

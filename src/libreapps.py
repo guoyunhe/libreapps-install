@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 __author__ = "Guo Yunhe <guoyunhebrave@gmail.com>"
 __date__ = "$2015-10-17 14:36:39$"
 
