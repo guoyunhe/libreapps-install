@@ -9,6 +9,7 @@ if __name__ == "__main__":
     parser.add_argument('url', type=str, help='URL of one click package installation')
     args = parser.parse_args()
     url = args.url
+    # TODO parse packages and check distro type
     packages = url[8:].split(',')
     
     try:
