@@ -5,7 +5,7 @@ __date__ = "$2015-10-17 14:36:39$"
 
 import dbus
 import argparse
-import platform
+import os.path
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process some integers.')
@@ -13,32 +13,41 @@ if __name__ == "__main__":
     args = parser.parse_args()
     url = args.url
     
-    # check distro info
-    (distname, version, id) = platform.linux_distribution()
-    
     # parse packages
     patterns = url[8:].split('&')
     
     ## general packages
     packages = patterns[0].split(',')
     
-    ## distro-specified packages
-    distname_prefix = distname.strip().lower() + '='
-    for pattern in patterns:
-        if pattern.find(distname_prefix) == 0:
-            packages = pattern.replace(distname_prefix, '').split(',')
-    
-    ## distro-version-specified packages
-    distname_version_prefix = distname.strip().lower() + ':' + version.strip().lower() + '='
-    for pattern in patterns:
-        if distname_version_prefix in pattern:
-            packages = pattern.replace(distname_version_prefix, '').split(',')
-        
+    # check distro info
+    if os.path.isfile("/etc/os-release"):
+        with open("/etc/os-release") as release_file:
+            for line in release_file:
+                name, var = line.partition("=")[::2]
+                if name.strip() == 'ID':
+                    dist_name = var.strip()
+                elif name.strip() == 'VERSION_ID':
+                    dist_version = var.strip()
+        print dist_name, dist_version
+        ## distro-specified packages
+        dist_prefix = dist_name + '='
+        for pattern in patterns:
+            if pattern.find(dist_prefix) == 0:
+                packages = pattern.replace(dist_prefix, '').split(',')
+
+        ## distro-version-specified packages
+        dist_prefix = dist_name + ':' + dist_version + '='
+        for pattern in patterns:
+            if pattern.find(dist_prefix) == 0:
+                packages = pattern.replace(dist_prefix, '').split(',')
+    else:
+        print 'unknown ditribution'
+
     try:
         bus = dbus.SessionBus()
     except dbus.DBusException, e:
         print 'PackageKit Connection Expception: %s' % str(e)
-        sys.exit()
+        exit()
     try:
         proxy = bus.get_object('org.freedesktop.PackageKit', '/org/freedesktop/PackageKit')
         iface = dbus.Interface(proxy, 'org.freedesktop.PackageKit.Modify')
