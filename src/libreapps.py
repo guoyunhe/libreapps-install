@@ -3,6 +3,7 @@
 __author__ = "Guo Yunhe <guoyunhebrave@gmail.com>"
 __date__ = "$2015-10-17 14:36:39$"
 
+import sys
 import dbus
 import argparse
 import os.path
@@ -47,7 +48,7 @@ if __name__ == "__main__":
         bus = dbus.SessionBus()
     except dbus.DBusException, e:
         print 'PackageKit Connection Expception: %s' % str(e)
-        exit()
+        sys.exit()
     try:
         proxy = bus.get_object('org.freedesktop.PackageKit', '/org/freedesktop/PackageKit')
         iface = dbus.Interface(proxy, 'org.freedesktop.PackageKit.Modify')
