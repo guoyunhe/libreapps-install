@@ -27,7 +27,7 @@ if __name__ == "__main__":
                 if name.strip() == 'ID':
                     dist_name = var.strip()
                 elif name.strip() == 'VERSION_ID':
-                    dist_version = var.strip()
+                    dist_version = var.replace('"', '').strip()
         print dist_name, dist_version
         ## distro-specified packages
         dist_prefix = dist_name + '='
